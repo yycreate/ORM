@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"test01/models"
-	"test01/service"
+	"ORM/models"
+	"ORM/service"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/logs"

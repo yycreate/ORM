@@ -1,11 +1,11 @@
 package main
 
 import (
-	_ "test01/routers"
+	_ "ORM/routers"
 
+	"ORM/models"
+	"ORM/util/redisTool"
 	_ "fmt"
-	"test01/models"
-	"test01/util/redisTool"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"

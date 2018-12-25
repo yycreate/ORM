@@ -1,9 +1,9 @@
 package service
 
 import (
+	"ORM/models"
+	"ORM/util"
 	"fmt"
-	"test01/models"
-	"test01/util"
 
 	"github.com/astaxie/beego/orm"
 )

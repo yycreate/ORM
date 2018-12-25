@@ -1,8 +1,8 @@
 package routers
 
 import (
+	"ORM/controllers"
 	"fmt"
-	"test01/controllers"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/context"
