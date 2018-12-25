@@ -4,6 +4,7 @@ import (
 	_ "ORM/routers"
 
 	"ORM/models"
+	"ORM/util/ftpTool"
 	"ORM/util/redisTool"
 	_ "fmt"
 
@@ -14,12 +15,13 @@ import (
 func main() {
 	dbInit()              //数据库初始化
 	redisTool.RedisLink() //初始化redis的链接
+	ftpTool.InitFtp()
 	beego.Run()
 }
 
 func dbInit() {
 	// set default database
-	orm.RegisterDataBase("default", "mysql", "root:YYMySql2012@/beeadmin?charset=utf8", 30)
+	orm.RegisterDataBase("default", "mysql", "root:@/beeadmin?charset=utf8", 30)
 	// register model
 	orm.RegisterModel(
 		new(models.User),
