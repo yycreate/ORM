@@ -21,7 +21,7 @@ var (
 	ftp_password string
 )
 
-func InitFtp() {
+func copyFile(localFilePath, remoteDir string) {
 
 	ftp_ip = beego.AppConfig.String("ftp.ip")
 	ftp_port = 52168
@@ -41,8 +41,8 @@ func InitFtp() {
 	defer sftpClient.Close()
 
 	// 用来测试的本地文件路径 和 远程机器上的文件夹
-	var localFilePath = "e:/s.txt"
-	var remoteDir = "/home/ftp/"
+	//	var localFilePath = "e:/s.txt"
+	//	var remoteDir = "/home/ftp/"
 	srcFile, err := os.Open(localFilePath)
 	if err != nil {
 		log.Fatal(err)
