@@ -22,19 +22,18 @@ func Get(url string) string {
 	return ""
 }
 
-func Post(reqUrl string, params map[string]string) string {
-
+func Post(reqUrl string, params map[string]string) interface{} {
+	client := &http.Client{}
 	mjson, _ := json.Marshal(params)
 	paramsStr := string(mjson)
-	res, err := http.NewRequest("POST", reqUrl, strings.NewReader(paramsStr))
-	defer res.Body.Close()
-
-	fmt.Println(res.Body)
-	fmt.Println(res.Context())
-	body, err := ioutil.ReadAll(res.Body)
-	fmt.Println(body)
+	req, err := http.NewRequest("POST", reqUrl, strings.NewReader(paramsStr))
+	req.Header.Set("Content-Type", "application/json")
+	resp, err := client.Do(req)
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	fmt.Println(string(body))
 	if err != nil {
-		return ""
+		return nil
 	}
-	return ""
+	return string(body)
 }
