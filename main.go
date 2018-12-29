@@ -18,8 +18,10 @@ func main() {
 }
 
 func dbInit() {
+	user := beego.AppConfig.String("mysql.user")
+	password := beego.AppConfig.String("mysql.password")
 	// set default database
-	orm.RegisterDataBase("default", "mysql", "root:@/beeadmin?charset=utf8", 30)
+	orm.RegisterDataBase("default", "mysql", user+":"+password+"@/beeadmin?charset=utf8", 30)
 	// register model
 	orm.RegisterModel(
 		new(models.User),
