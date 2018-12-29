@@ -8,18 +8,18 @@ import (
 	"strings"
 )
 
-func Get(url string) string {
+func Get(url string) interface{} {
 	resp, err := http.Get(url)
 	if err != nil {
-		// handle error
+		return nil
 	}
-	body := resp.Body
+	body, err := ioutil.ReadAll(resp.Body)
 	defer resp.Body.Close()
 	if err != nil {
-		// handle error
+		return nil
 	}
-	fmt.Print(body)
-	return ""
+	fmt.Println(string(body))
+	return string(body)
 }
 
 func Post(reqUrl string, params map[string]string) interface{} {
